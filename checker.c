@@ -9,7 +9,7 @@ int batteryIsOk(float temperature, float soc, float chargeRate) {
 
 int checkTemperature(float temperature) {
   if(temperature < 0 || temperature > 45){
-    printTemperatureStatus(temperature);
+    printTemperatureStatus();
     return 0;
   }
   return 1;
@@ -17,7 +17,7 @@ int checkTemperature(float temperature) {
 
 int checkSOC(float soc) {
   if(soc < 20 || soc > 80) {
-    printSOCStatus(soc);
+    printSOCStatus();
     return 0;
   }
   return 1;
