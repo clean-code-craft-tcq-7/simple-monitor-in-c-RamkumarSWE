@@ -2,8 +2,8 @@
 #include <assert.h>
 
 int batteryIsOk(float temperature, float soc, float chargeRate) {
-  return checkTemperature(temperature) && checkSOC(soc) \
-  && checkChargeRate(chargeRate);
+  return (checkTemperature(temperature) && checkSOC(soc) \
+  && checkChargeRate(chargeRate));
 }
 
 
