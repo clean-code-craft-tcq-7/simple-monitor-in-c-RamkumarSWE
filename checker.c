@@ -1,13 +1,13 @@
 #include <stdio.h>
 #include <assert.h>
-void printChargeRateStatusWarning();
+
 int batteryIsOk(float temperature, float soc, float chargeRate);
 int checkTemperature(float temperature);
 int checkSOC(float soc);
 int checkChargeRate(float chargeRate);
-void printTemperatureStatus();
-void printSOCStatus();
-void printChargeRateStatusWarning();
+void printTemperatureStatus(float temperature);
+void printSOCStatus(float soc)
+void printChargeRateStatus();
 
 int batteryIsOk(float temperature, float soc, float chargeRate) {
   return (checkTemperature(temperature) && checkSOC(soc) \
@@ -16,7 +16,7 @@ int batteryIsOk(float temperature, float soc, float chargeRate) {
 
 int checkTemperature(float temperature) {
   if(temperature < 0 || temperature > 45){
-    printTemperatureStatus();
+    printTemperatureStatus(temperature);
     return 0;
   }
   return 1;
@@ -32,23 +32,33 @@ int checkSOC(float soc) {
 
 int checkChargeRate(float chargeRate) {
   if(chargeRate > 0.8) {
-    printChargeRateStatusWarning();
+    printChargeRateStatus();
     return 0;
   }
   return 1;
 }
 
-void printTemperatureStatus() {
-  printf("Temperature out of range!\n"); 
+void printTemperatureStatus(float temperature) {
+  printf("Temperature out of range!\t");
+  if (temperature < 0){
+    printf("LOW\n"); 
+  }else {
+    printf("HIGH\n"); 
+  }
   
 }
 
-void printSOCStatus() {
-  printf("State of Charge out of range!\n");
+void printSOCStatus(float soc) {
+  printf("State of Charge out of range!\t");
+  if(soc < 20){
+    printf("LOW\n");
+  }else {
+    printf("HIGH\n");
+  }
   
 }
 
-void printChargeRateStatusWarning() {
+void printChargeRateStatus() {
   printf("Charge Rate out of range!\n");  
 }
 
