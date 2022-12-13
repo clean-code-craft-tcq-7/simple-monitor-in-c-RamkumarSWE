@@ -1,11 +1,18 @@
 #include <stdio.h>
 #include <assert.h>
+void printChargeRateStatusWarning();
+int batteryIsOk(float temperature, float soc, float chargeRate);
+int checkTemperature(float temperature);
+int checkSOC(float soc);
+int checkChargeRate(float chargeRate);
+void printTemperatureStatus();
+void printSOCStatus();
+void printChargeRateStatusWarning();
 
 int batteryIsOk(float temperature, float soc, float chargeRate) {
   return (checkTemperature(temperature) && checkSOC(soc) \
   && checkChargeRate(chargeRate));
 }
-
 
 int checkTemperature(float temperature) {
   if(temperature < 0 || temperature > 45){
